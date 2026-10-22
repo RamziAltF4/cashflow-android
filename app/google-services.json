@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "807273905165",
+    "firebase_url": "https://novaapp-b64ad-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "novaapp-b64ad",
+    "storage_bucket": "novaapp-b64ad.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807273905165:android:8ad7bab07c7b0b25e42944",
+        "android_client_info": {
+          "package_name": "com.ramzi.cashflow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANsNaZ6ouW1DlDS4aCTT9oYfe4wxv2Rh4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
