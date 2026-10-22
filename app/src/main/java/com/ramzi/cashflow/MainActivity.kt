@@ -27,6 +27,8 @@ import com.ramzi.cashflow.presentation.lock.AppLockGate
 import com.ramzi.cashflow.presentation.navigation.CashflowNavHost
 import com.ramzi.cashflow.presentation.theme.ThemeViewModel
 import com.ramzi.cashflow.presentation.theme.ThemeViewModelFactory
+import com.ramzi.cashflow.presentation.update.ForceUpdateDialog
+import com.ramzi.cashflow.presentation.update.UpdateViewModel
 import com.ramzi.cashflow.service.AutoSaveWorker
 import com.ramzi.cashflow.ui.theme.CashflowTheme
 import com.ramzi.cashflow.util.AppLockManager
@@ -72,6 +74,10 @@ class MainActivity : FragmentActivity() {
             )
             val currentBroadcast by broadcastViewModel.currentBroadcast.collectAsState()
 
+            // ═══ CEK UPDATE DARI GITHUB ═══
+            val updateViewModel: UpdateViewModel = viewModel()
+            val updateInfo by updateViewModel.updateInfo.collectAsState()
+
             // ═══ AUTO-REFRESH PLAN SAAT APP RESUME ═══
             val lifecycleOwner = LocalLifecycleOwner.current
             DisposableEffect(lifecycleOwner) {
@@ -82,6 +88,11 @@ class MainActivity : FragmentActivity() {
                 }
                 lifecycleOwner.lifecycle.addObserver(observer)
                 onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+            }
+
+            // Tampilkan dialog Force Update jika ada versi baru
+            if (updateInfo != null) {
+                ForceUpdateDialog(updateInfo = updateInfo!!)
             }
 
             CashflowTheme(
